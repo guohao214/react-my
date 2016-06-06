@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击切换</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    
+</head>
+
+<style>
+	.selected {
+		background:red;
+	}
+</style>
+<body>
+	<div id="container"></div>
+
+	<script type="text/babel">
+		var NavComponent = React.createClass({
+			getInitialState: function() {
+				return {selected:this.props.selected}
+			},
+			handlerClick: function(ev) {
+				this.setState({
+					selected:ev.target.getAttribute('data-value')
+				})
+			},
+			render: function() {
+				var tabs = [];
+
+				this.props.data.map(function($item) {
+					var selected = ($item.value === this.state.selected) ? 'selected' : '';
+					tabs.push((<li data-value={$item.value} className={selected} onClick={this.handlerClick}>{$item.name}</li>))
+				}, this)
+				
+				return (
+					<div>
+						<ul>
+						{tabs}
+						</ul>
+					</div>
+				)
+			}
+		})
+		
+
+		ReactDOM.render(
+			<NavComponent data={[{name:"百度", value:"baidu"}, {name:"谷歌", value:"google"}, {name:"雅虎", value:"yahoo"}]} selected="baidu"/>
+			, document.getElementById('container')
+		)
+
+	</script>
+</body>
+</html>
