@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件状态</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    
+</head>
+<body>
+	<div id="container"></div>
+
+	<script type="text/babel">
+		var StatusComponent = React.createClass({
+			getInitialState: function() {
+				return {enable: false}
+			},
+			handlerClick: function() {
+				this.setState({
+					enable: !this.state.enable
+				})
+			},
+			componentWillReceiveProps: function(nextProps){ //已加载组件收到新的参数时调用
+				console.log(nextProps);
+				return({});
+			},
+			shouldComponentUpdate: function(nextProps, nextState) { //件判断是否重新渲染时调用
+				console.log(nextProps, nextState);
+				return({});
+			},
+			render: function() {
+				return (
+					<div>
+						<input type="text" disabled={this.state.enable} name={this.props.name}/>
+						<button onClick={this.handlerClick}>切换</button>
+					</div>
+				)
+
+			}
+			
+		});
+
+		ReactDOM.render(
+			<StatusComponent name="display"/>
+			,
+			document.getElementById('container')
+		)
+
+	</script>
+</body>
+</html>

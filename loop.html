@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    
+</head>
+<body>
+	<div id="container"></div>
+	<div id="container1"></div>
+
+	<script type="text/babel">
+		var names = ['john', 'lily', 'lucy'];
+		ReactDOM.render(
+			<div>
+			{
+				names.map(function(name) {
+					return <div>hello, {name}!</div>
+				})
+			}
+			</div>
+			,
+			document.getElementById('container')
+		)
+
+		var message = [
+			<h1>ok</h1>,
+			<h1>error</h1>
+		];
+
+		ReactDOM.render(
+			<div>
+				{message}
+			</div>
+			,
+			document.getElementById('container1')
+		)
+
+	</script>
+</body>
+</html>
