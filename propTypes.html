@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PropTypes</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+    
+</head>
+<body>
+	<div id="container"></div>
+
+	<script type="text/babel">
+
+		var SearchComponent = React.createClass({
+			propTypes: {
+				searchType:React.PropTypes.string.isRequired
+			},
+			getDefaultProps: function() {
+				return {
+					searchType: 'search'
+				}
+			},
+			render: function() {
+				return (
+					<div>
+						{this.props.searchType}<input type="text" />
+						<button>Search</button>
+					</div>
+				)
+			}
+		});
+
+		var $searchType = 123;
+		//react.js:18794 Warning: Failed propType: Invalid prop `searchType` of type `number` supplied to `SearchComponent`, expected `string`.
+		ReactDOM.render(
+			<SearchComponent/>
+			,
+			document.getElementById('container')
+		)
+
+	</script>
+</body>
+</html>
