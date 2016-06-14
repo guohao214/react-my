@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>otherprops</title>
+
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+</head>
+<body>
+	<script type="text/babel">
+		var FancyCheckbox = React.createClass({
+		  render: function() {
+		    var { checked, ...other } = this.props;
+		    var fancyClass = checked ? 'FancyChecked' : 'FancyUnchecked';
+		    // `other` 包含 { onClick: console.log } 但 checked 属性除外
+		    return (
+		      <div {...other} className={fancyClass} />
+		    );
+		  }
+		});
+
+		ReactDOM.render(
+		  <FancyCheckbox checked={true} onClick={console.log.bind(console)} whet="gg">
+		    Hello world!
+		  </FancyCheckbox>,
+		  document.body
+		);
+	</script>
+</body>
+</html>
