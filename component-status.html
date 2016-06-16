@@ -21,6 +21,15 @@
 					enable: !this.state.enable
 				})
 			},
+			componentDidMount: function() {
+				// 获得组件的dom节点
+				
+				// 不推荐使用
+				//console.log(this.getDOMNode())
+
+				// 推荐使用
+				console.log(ReactDOM.findDOMNode(this))
+			},
 			componentWillReceiveProps: function(nextProps){ //已加载组件收到新的参数时调用
 				console.log(nextProps);
 				return({});
