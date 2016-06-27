@@ -45,8 +45,16 @@
 				console.log('me will receive props');
 			},
 			render: function() {
+				var divStyle = {
+					  color: 'red',
+					  'fontSize': '10rem',
+					  //backgroundImage: 'url(' + imgUrl + ')',
+					  WebkitTransition: 'all', // 注意这里的首字母'W'是大写
+					  msTransition: 'all' // 'ms'是唯一一个首字母需要小写的浏览器前缀
+				};
+
 				return (
-					<div>
+					<div style={divStyle}>
 						<input type="text"
 							onFocus={this.handlerFocus} onChange={this.handlerChange}/>
 						<div>
