@@ -1,0 +1,8 @@
+  img {
+        width:180px;
+        cursor:pointer;
+      }
+
+      .big img {
+        width:500px;
+      }

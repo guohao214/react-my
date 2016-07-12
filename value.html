@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>受限组件</title>
+	    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+</head>
+<body>
+<form id="container1	" method="get">
+	<div id="container"></div>
+
+<input type=submit value=submit>
+</form>
+	<script type="text/babel">
+		
+		var ValueComponent = React.createClass({
+		  getInitialState: function() {
+		    return {value: 'Hello!'};
+		  },
+		  handleChange: function(event) {
+		    this.setState({value: event.target.value});
+		    console.log(document.getElementById('tt').value)
+		  },
+		  render: function() {
+		    var value = this.state.value;
+		    return (
+<ReactCSSTransitionGroup transitionName="example">
+		    <input type="text" value={value} onChange={this.handleChange} id="tt"/>
+</ReactCSSTransitionGroup>
+		    );
+		  }
+		})
+
+		ReactDOM.render(<ValueComponent />, document.getElementById('container'))
+
+
+	</script>
+</body>
+</html>
